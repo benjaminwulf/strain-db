@@ -1,3 +1,15 @@
+import axios from 'axios';
+
+export function getAllStrains() {
+   axios.get("http://strainapi.evanbusse.com/yh2fbKy/strains/search/all")
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
 export function formatPrice(cents) {
   return (cents / 100).toLocaleString("en-US", {
     style: "currency",
