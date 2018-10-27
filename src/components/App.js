@@ -1,5 +1,5 @@
 import React from 'react';
-import StrainPicker from './StrainPicker';
+import Search from './Search';
 import Header from './Header';
 import Name from './Name';
 import Description from './Description';
@@ -9,8 +9,8 @@ class App extends React.Component {
         return (
             <div className="strain-of-the-day">
                <div className="menu">
-               <Header tagline="Pinapple Express" />
-               <StrainPicker />
+               <Header />
+               <Search />
                </div>
                <Name />
                <Description />
