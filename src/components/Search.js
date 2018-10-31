@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { getStrainOfStrains } from "../helpers";
-import axios from 'axios';
+import { getStrainOfStrains, getEffects, getFlavors } from "../helpers";
+
 
 class Search extends Component {
 
@@ -8,26 +8,16 @@ class Search extends Component {
         super(props)
         this.state = {
             query: '',
-            result: []
+            result: [],
+            effects: [],
+            flavors: []
         }
       }
-
-//       componentDidMount(){
-//         //console.log('Query:', query);
-//   axios.get(`http://strainapi.evanbusse.com/yh2fbKy/strains/search/name/${this.state.query}`)
-//         .then(json => json.data.results.map(result => (
-//           {
-//             name: `${result.name}`,
-//             race: `${result.race}`,
-//             desc: `${result.desc}`,
-//           })))
-//         .then(newData => this.setState({query: newData, result: newData}))
-//         .catch(error => alert(error))
-//         }
 
  handleInputChange = e => {
    this.setState({
     query: e.target.value,
+    id: ''
    })
 
     getStrainOfStrains(e.target.value).then((response) => {
@@ -35,9 +25,32 @@ class Search extends Component {
         this.setState({
             result: response.data
           })
-    });
+    });     
  }
 
+ getEffectsId = (e) => {
+    console.log("ID IS:",e.target.id)
+    var id = e.target.id;
+    getEffects(id).then((response) => {
+    this.setState({
+        effects: response.data.positive
+        // effectsNegative: response.data.negative,
+        // effectsMedical: response.data.medical
+      })
+    })
+ }
+
+ getFlavorsId = (e) => {
+    console.log("ID IS:",e.target.id)
+    var id = e.target.id;
+    getFlavors(id).then((response) => {
+    this.setState({
+        flavors: response.data
+      })
+    })
+ }
+ 
+ 
  render() {
    return (
     <div>
@@ -51,9 +64,24 @@ class Search extends Component {
      </form>
      {this.state.result.map(item => (
      <div>
+        <h2>
         <div>{item.name}</div>
-        <div>{item.race}</div>
-        <div>{item.desc}</div>
+        </h2>
+
+        <button waves='light' type="submit" onClick={this.getEffectsId} id={item.id}>Effects: {item.id}
+        <div>
+        {this.state.effects}
+        </div>
+        </button>
+
+        <button waves='light' type="submit" onClick={this.getFlavorsId} id={item.id}>Flavors: {item.id}
+        <div>
+        {this.state.flavors}
+        </div>
+        </button>
+
+        <div>Type: {item.race}</div>
+        <div>Description: {item.desc}</div>
      </div>
     ))}
      </div>
