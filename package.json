@@ -2,7 +2,15 @@
   "name": "cotd",
   "version": "0.0.3",
   "private": true,
-  "devDependencies": {
+  
+  "name": "Stain-DB",
+  "description": "Strain-DB. A Joint Effect!!!",
+  "version": "1.0.0",
+  "engines": {
+    "yarn": "1.10.1"
+  }
+  }
+"devDependencies": {
     "concurrently": "3.5.1",
     "react-scripts": "^1.1.4"
   },
