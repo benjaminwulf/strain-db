@@ -1,6 +1,7 @@
 import React from 'react';
 import Search from './Search';
 import Header from './Header';
+import Name from './Name';
 import Description from './Description';
 
 class App extends React.Component {
@@ -11,6 +12,8 @@ class App extends React.Component {
                <Header />
                <Search />
                </div>
+               <Name />
+               <Description />
             </div>
         );
     }
