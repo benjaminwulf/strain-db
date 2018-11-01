@@ -7,10 +7,10 @@
     "yarn": "1.10.1"
   },
   "devDependencies": {
-    "concurrently": "3.5.1",
-    "react-scripts": "^2.1.0"
+    "concurrently": "3.5.1"
   },
   "dependencies": {
+    "react-scripts": "^2.1.0",
     "autoprefixer-stylus": "0.14.0",
     "axios": "^0.18.0",
     "prop-types": "^15.6.0",
